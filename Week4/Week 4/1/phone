@@ -1,0 +1,16 @@
+if [ $# -eq 0 ]
+then
+	echo Usage: phone searchfor [...searchfor]
+else
+
+	msg="cat mydata.txt"
+	
+	for i in "$@"
+	do
+		msg+=" | egrep -i "$i""		
+	done
+	
+	msg+=" | awk -f display.awk"
+
+	eval $msg	
+fi
